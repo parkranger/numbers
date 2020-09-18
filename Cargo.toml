@@ -1,0 +1,14 @@
+[package]
+name = "numbers"
+version = "0.1.0"
+description = "Playground to do some number processing with Rust."
+authors = ["Jens <jens@team-rhino.de>"]
+license = "MIT"
+homepage = "https://github.com/parkranger/numbers"
+repository = "https://github.com/parkranger/numbers.git"
+readme = "README.md"
+edition = "2018"
+
+[dependencies]
+clap = "~2.33.0"
+error-chain = "~0.12"
