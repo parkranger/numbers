@@ -25,7 +25,7 @@ $ numbers.exe ggt 1111 143
  ggT(111, 143) = teilerfremd
 ```
 
-### Least Common Multiple (LCM)
+## Least Common Multiple (LCM)
 
 kleinstes gemeinsames Vielfaches (kgV)
 
