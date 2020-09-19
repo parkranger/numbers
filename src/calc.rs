@@ -21,6 +21,14 @@ impl Calc {
     }
 
     /// Formats the values as a comma separated list.
+    ///
+    /// # Example
+    ///
+    /// ```rust
+    /// let calc = Calc::new(vec![8, 12, 24]);
+    /// assert_eq!(calc.values_for_display(), "8, 12, 24");
+    /// ```
+    ///
     fn values_for_display(&self) -> String {
         self.values
             .iter()
@@ -66,7 +74,7 @@ impl Calc {
     ///
     /// Sollten die Zahlen keinen gemeinsamen Teiler besitzen, verwenden wir das Wort "teilerfremd".
     ///
-    pub fn command_ggt(&self) -> Result<()> {
+    pub fn calc_ggt(&self) -> u32 {
         let values_pf = self.values_pf();
         let mut ggt = 1;
         let mut pf_last: u32 = 0;
@@ -89,8 +97,16 @@ impl Calc {
             (0..n).for_each(|_| ggt *= *pf)
         }
 
+        ggt
+    }
+
+    /// Calculates the GCD and prints the result to stdout.
+    pub fn command_ggt(&self) -> Result<()> {
+        let ggt = self.calc_ggt();
+
         if ggt == 1 {
-            println!(" ggT({}) = {}", self.values_for_display(), "teilerfremd"); // coprime
+            println!(" ggT({}) = {}", self.values_for_display(), "teilerfremd");
+        // coprime
         } else {
             println!(" ggT({}) = {}", self.values_for_display(), ggt);
         }
@@ -98,7 +114,7 @@ impl Calc {
         Ok(())
     }
 
-    /// Bestimmen des kleinsten gemainsamen Vilefachen (kgV) durch Primfaktorzerlegung.
+    /// Bestimmen des kleinsten gemeinsamen Vielfachen (kgV) durch Primfaktorzerlegung.
     ///
     /// Als erstes bestimmt man die Primfaktorzerlegung der Zahlen. Anschließend fasst man
     /// alle auftretenden Primfaktoren in ihrer höchsten Anzahl zusammen.
@@ -126,7 +142,14 @@ impl Calc {
     ///   kgV = 2 · 2 · 2 · 3 · 5 = 120
     /// ```
     ///
-    pub fn command_kgv(&self) -> Result<()> {
+    /// # Example
+    ///
+    /// ```rust
+    /// let calulator = Calc::new(vec![6, 40]);
+    /// assert_eq!(calculator.calc_kgv(), 120);
+    /// ```
+    ///
+    pub fn calc_kgv(&self) -> u32 {
         let mut values_pf = self.values_pf();
         let mut kgv = 1;
 
@@ -141,6 +164,13 @@ impl Calc {
                 });
             }
         }
+
+        kgv
+    }
+
+    /// Calculates the LCM and prints the result to stdout.
+    pub fn command_kgv(&self) -> Result<()> {
+        let kgv = self.calc_kgv();
 
         println!(" kgV({}) = {}", self.values_for_display(), kgv);
 
@@ -174,14 +204,20 @@ mod tests {
     }
 
     #[test]
-    fn calc_command_ggt() {
+    fn calc_ggt() {
         let worker = Calc::new(vec![8, 20]);
-        assert!(worker.command_ggt().is_ok()); // -> 4
+        assert_eq!(worker.calc_ggt(), 4);
     }
 
     #[test]
-    fn calc_command_kgv() {
+    fn calc_kgv() {
         let worker = Calc::new(vec![8, 12]);
-        assert!(worker.command_kgv().is_ok()); // -> 24
+        assert_eq!(worker.calc_kgv(), 24);
+    }
+
+    #[test]
+    fn command_kgv() {
+        let worker = Calc::new(vec![8, 12]);
+        worker.command_kgv().unwrap();
     }
 }

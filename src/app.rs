@@ -1,5 +1,6 @@
 use crate::calc::Calc;
 use clap::{App, AppSettings, Arg, SubCommand};
+use log::info;
 
 error_chain! {
     foreign_links {
@@ -67,7 +68,9 @@ pub fn run() -> Result<()> {
         )
         .get_matches();
 
-    // println!("matches: {:?}", matches);
+    println!("matches: {:?}", matches);
+
+    info!("This is {}, v{}", crate_name!(), crate_version!());
 
     let command_result: Result<()> = match matches.subcommand() {
         ("pfz", Some(sub_m)) => Calc::from_args(sub_m).command_pfz(),

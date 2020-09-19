@@ -33,3 +33,12 @@ kleinstes gemeinsames Vielfaches (kgV)
 $ numbers.exe kgv 6 40
  kgV(6, 40) = 120
 ```
+
+---
+
+Run with logging enabled:
+
+```
+$ env RUST_LOG=numbers=info cargo run -- pfz 12
+$ env RUST_LOG=info cargo run -- pfz 12
+```

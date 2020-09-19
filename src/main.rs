@@ -6,12 +6,15 @@
 extern crate clap;
 #[macro_use]
 extern crate error_chain;
+extern crate log;
 
 mod app;
 mod calc;
 mod prime;
 
 fn main() {
+    env_logger::init();
+
     if let Err(ref errors) = app::run() {
         eprintln!("Error level - description");
         errors
