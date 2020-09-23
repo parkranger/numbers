@@ -28,3 +28,17 @@ fn subcommand_ggt() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+#[test]
+fn subcommand_kgv() -> Result<(), Box<dyn std::error::Error>> {
+    let mut cmd = Command::cargo_bin("numbers")?;
+
+    cmd.arg("kgv")
+        .arg("6")
+        .arg("40")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("kgV(6, 40) = 120"));
+
+    Ok(())
+}
