@@ -8,7 +8,7 @@ Playground to do some number processing with Rust.
 
 Primfaktorzerlegung
 
-```
+```bash
 $ numbers.exe pfz 7676
 Primfaktorzerlegung
  pfz(7676) = [2, 2, 19, 101]
@@ -18,7 +18,7 @@ Primfaktorzerlegung
 
 größter gemeinsamer Teiler (ggT)
 
-```
+```bash
 $ numbers.exe ggt 1111 143
  ggT(1111, 143) = 11
 $ numbers.exe ggt 1111 143
@@ -29,7 +29,7 @@ $ numbers.exe ggt 1111 143
 
 kleinstes gemeinsames Vielfaches (kgV)
 
-```
+```bash
 $ numbers.exe kgv 6 40
  kgV(6, 40) = 120
 ```
@@ -38,7 +38,7 @@ $ numbers.exe kgv 6 40
 
 Run with logging enabled:
 
-```
-$ env RUST_LOG=numbers=info cargo run -- pfz 12
-$ env RUST_LOG=info cargo run -- pfz 12
+```bash
+env RUST_LOG=numbers=info cargo run -- pfz 12
+env RUST_LOG=info cargo run -- pfz 12
 ```
